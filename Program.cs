@@ -33,18 +33,4 @@ namespace NapilnikShop
             cart.Add(iPhone12, 9);
         }
     }
-
-    public class Shop
-    {
-        public Warehouse Warehouse;
-        private Cart _templateCart;
-        
-        public Shop(Warehouse warehouse) => Warehouse = warehouse;
-
-        public Cart Cart()
-        {
-            _templateCart = new Cart(Warehouse);
-            return _templateCart;
-        }
-    }
 }

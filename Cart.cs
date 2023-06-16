@@ -7,10 +7,12 @@ namespace NapilnikShop
     {
         private List<Position> _goods = new List<Position>();
         private Warehouse _warehouse;
+        private Shop _shop;
 
-        public Cart(Warehouse warehouse)
+        public Cart(Warehouse warehouse, Shop shop)
         {
             _warehouse = warehouse;
+            _shop = shop;
         }
 
         public void Add(Good good, int count)
@@ -23,16 +25,18 @@ namespace NapilnikShop
             }
         }
 
-        public string Order()
+        public Shop Order()
         {
             for (int i = 0; i < _goods.Count; i++)
             {
                 _warehouse.TransferPositionToCart(_goods[i]);
 
-                return $"Товар {_goods[i].Good.Name} в кол-во {_goods[i].Count} готов к оплате";
+                return _shop;
             }
 
-            return $"Возникла ошибка, попробуйте позже";
+            Console.WriteLine($"Возникла ошибка, попробуйте позже");
+
+            return null;
         }
 
         public void ShowPosition()
